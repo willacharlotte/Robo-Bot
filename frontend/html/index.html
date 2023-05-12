@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cluedo!</title>
+    <link rel="stylesheet" href="../css/hide.css" />
+    <script src="../js/splash.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Cluedo!</h1>
+      <h3 id="await-new-game">Waiting for a new game to start...</h3>
+      <h3 id="new-game" class="hide">A new game has been created by {{playerName}}</h3>
+      <h3 id="await-players" class="hide">Waiting for players to join...</h3>
+      <table id="joining-players" class="hide"><caption>Current Players</caption>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Character</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="player-template" class="hide">
+            <td>{{playerName}}</td>
+            <td>{{playerUsername}}</td>
+            <td>{{characterName}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="await-game-start" class="hide">You need at least two players to play!</h3>
+      <h3 id="game-start" class="hide">{{playerName}} has started the game. Redirecting...</h3>
+    </main>
+  </body>
+</html>
