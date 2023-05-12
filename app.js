@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import { VerifyDiscordRequest } from "./backend/utils.js";
 import interactions from "./backend/handlers/interactions.js";
+import splash from "./backend/handlers/splash.js";
 
 // Create an express app
 const app = express();
@@ -17,6 +18,8 @@ const activeGames = {};
  * Interactions endpoint URL where Discord will send HTTP requests
  */
 app.post("/interactions", (req, res) => interactions(req, res, activeGames));
+
+app.get("/", splash)
 
 app.listen(PORT, () => {
   console.log("Listening on port", PORT);
