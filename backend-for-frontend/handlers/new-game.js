@@ -1,7 +1,7 @@
-export const getNewGame = () => {
+export const getNewGame = (req, res) => {
 
 }
 
-export const postNewGame = () => {
+export const postNewGame = (req, res) => {
 
 }

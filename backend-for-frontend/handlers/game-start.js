@@ -1,7 +1,7 @@
-export const getGameStart = () => {
+export const getGameStart = (req, res) => {
 
 }
 
-export const postGameStart = () => {
+export const postGameStart = (req, res) => {
 
 }
