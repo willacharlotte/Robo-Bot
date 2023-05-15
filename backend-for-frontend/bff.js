@@ -8,9 +8,7 @@ import { EventEmitter } from "events";
 
 const PORT = process.env.BFF_PORT || 3001;
 
-const bff = express()
-  .use(express.static("./frontend/"))
-  .use(express.json());
+const bff = express().use(express.static("./frontend/")).use(express.json());
 
 export const emitter = new EventEmitter();
 
@@ -21,7 +19,7 @@ export const emitter = new EventEmitter();
  *   TODO: figure what else needs to be passed through
  * }
  */
-let game = {
+export const game = {
   isReady: false,
   exists: false,
   data: {},
@@ -34,13 +32,13 @@ let game = {
  *   characterName: <string> name of character in the game
  * }
  */
-let players = [];
+export const players = [];
 
-bff.get("/new-game", (req, res) => getNewGame(req, res, game));
-bff.post("/new-game", (req, res) => postNewGame(req, res, game));
+bff.get("/new-game", getNewGame);
+bff.post("/new-game", postNewGame);
 
-bff.get("/player-join", (req, res) => getPlayerJoin(req, res, players));
-bff.post("/player-join", (req, res) => postPlayerJoin(req, res, players));
+bff.get("/player-join", getPlayerJoin);
+bff.post("/player-join", postPlayerJoin);
 
 bff.get("/game-start", getGameStart);
 bff.post("/game-start", postGameStart);

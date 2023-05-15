@@ -1,6 +1,6 @@
-import { emitter } from "../bff.js";
+import { emitter, game } from "../bff.js";
 
-export const getNewGame = (req, res, game) => {
+export const getNewGame = (req, res) => {
   new Promise((resolve) => {
     if (!game.exists) {
       emitter.on("new-game", (gameData) => resolve(gameData));
@@ -12,7 +12,7 @@ export const getNewGame = (req, res, game) => {
   });
 };
 
-export const postNewGame = (req, res, game) => {
+export const postNewGame = (req, res) => {
   game.data = req.body;
   game.exists = true;
   emitter.emit("new-game", game.data);
