@@ -7,7 +7,7 @@ const show = (element) => {
 };
 
 const bindData = (element, key, value) => {
-  element.innerHtml = element.innerHtml.replace(`{{${key}}}`, value);
+  element.innerHTML = element.innerHTML.replace(`{{${key}}}`, value);
 };
 
 const url = "http://localhost:3001";
@@ -15,17 +15,37 @@ const url = "http://localhost:3001";
 const awaitNewGame = document.getElementById("await-new-game");
 const newGame = document.getElementById("new-game");
 const awaitPlayers = document.getElementById("await-players");
-const joiningPlayers = document.getElementById("joining-players");
+const playersTable = document.getElementById("players-table")
+const playersTableBody = document.getElementById("players-table-body");
 const playerTemplate = document.getElementById("player-template");
 const awaitGameStart = document.getElementById("await-game-start");
 const gameStart = document.getElementById("game-start");
 
-fetch(url + "/new-game")
-  .then((res) => res.json())
-  .then((data) => {
-    bindData(newGame, "createdBy", data.createdBy);
+async function waitingRoom() {
+  const gameData = await fetch(url + "/new-game").then((res) => res.json());
+  bindData(newGame, "createdBy", gameData.createdBy);
 
-    hide(awaitNewGame);
-    show(newGame);
-    show(awaitPlayers);
-  });
+  hide(awaitNewGame);
+  show(newGame);
+
+  const players = [];
+  show(awaitPlayers);
+  show(playersTable);
+
+  while (players.length < 6) {
+    const newPlayerData = await fetch(url + "/player-join").then((res) =>
+      res.json()
+    );
+    const newPlayerNode = playerTemplate.cloneNode(true);
+
+    bindData(newPlayerNode, "username", newPlayerData.username);
+    bindData(newPlayerNode, "characterName", newPlayerData.characterName);
+
+    playersTableBody.appendChild(newPlayerNode);
+    show(newPlayerNode);
+
+    players.push(newPlayerData);
+  }
+}
+
+waitingRoom();

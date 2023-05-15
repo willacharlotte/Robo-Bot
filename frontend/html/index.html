@@ -16,7 +16,7 @@
         A new game has been created by {{createdBy}}
       </h3>
       <h3 id="await-players" class="hide">Waiting for players to join...</h3>
-      <table class="hide">
+      <table id="players-table" class="hide">
         <caption>
           Current Players
         </caption>
@@ -26,7 +26,7 @@
             <th>Character</th>
           </tr>
         </thead>
-        <tbody id="joining-players">
+        <tbody id="players-table-body">
           <tr id="player-template" class="hide">
             <td>{{username}}</td>
             <td>{{characterName}}</td>
