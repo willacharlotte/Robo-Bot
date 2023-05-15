@@ -1,7 +1,7 @@
-export const getPlayerJoin = (req, res) => {
+export const getPlayerJoin = (req, res, players) => {
   
 }
 
-export const postPlayerJoin = (req, res) => {
+export const postPlayerJoin = (req, res, players) => {
   
 }
