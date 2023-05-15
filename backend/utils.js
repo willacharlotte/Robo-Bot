@@ -86,9 +86,9 @@ export function dealCards(playerCount) {
 
   // Remove a random card from each of the decks
   const caseFileConfidential = [
-    suspects.splice(Math.floor(Math.random() * SUSPECTS.length), 1),
-    rooms.splice(Math.floor(Math.random() * ROOMS.length), 1),
-    weapons.splice(Math.floor(Math.random() * WEAPONS.length), 1),
+    suspects.splice(Math.floor(Math.random() * SUSPECTS.length), 1)[0],
+    rooms.splice(Math.floor(Math.random() * ROOMS.length), 1)[0],
+    weapons.splice(Math.floor(Math.random() * WEAPONS.length), 1)[0],
   ];
 
   // Shuffle the remaining cards together

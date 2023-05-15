@@ -7,7 +7,6 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import { DiscordRequest, dealCards } from '../utils.js';
-import { getShuffledOptions, getResult } from '../game.js';
 import { CHARACTER_CHOICE } from '../constants.js';
 
 export default async function interactions(req, res, activeGames) {
@@ -87,10 +86,15 @@ export default async function interactions(req, res, activeGames) {
 
       // Create active game using message ID as the game ID
       activeGames[id] = {
-        players: {},
+        caseFileConfidential: [],
+        players: new Set(),
+        playerData: {},
         playerCount: 0,
-        availableCharacters: CHARACTER_CHOICE,
+        gameStarted: false,
+        interactionToken: req.body.token,
       };
+
+      console.log(id); // TODO: send this id to the BFF
 
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
@@ -200,38 +204,54 @@ export default async function interactions(req, res, activeGames) {
       // Delete message with token in request body
       const endpoint = `webhooks/${process.env.APP_ID}/${req.body.token}/messages/${req.body.message.id}`;
 
-      // Add to the player count
-      activeGames[gameId].playerCount++;
+      if (activeGames[gameId].players[req.body.member.user.id] === undefined) {
+        // Add to the player count
+        activeGames[gameId].playerCount++;
 
-      try {
-        await res.send({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            // Fetches a random emoji to send from a helper function
-            content: 'Which character do you want to play as?',
-            // Indicates it'll be an ephemeral message
-            flags: InteractionResponseFlags.EPHEMERAL,
-            components: [
-              {
-                type: MessageComponentTypes.ACTION_ROW,
-                components: [
-                  {
-                    type: MessageComponentTypes.STRING_SELECT,
-                    // Append game ID
-                    custom_id: `select_character_${gameId}`,
-                    options: CHARACTER_CHOICE,
-                  },
-                ],
-              },
-            ],
-          },
-        });
-        // Delete previous message
-        if (activeGames[gameId].playerCount >= 6) {
-          await DiscordRequest(endpoint, { method: 'DELETE' });
+        try {
+          await res.send({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              // Fetches a random emoji to send from a helper function
+              content: 'Which character do you want to play as?',
+              // Indicates it'll be an ephemeral message
+              flags: InteractionResponseFlags.EPHEMERAL,
+              components: [
+                {
+                  type: MessageComponentTypes.ACTION_ROW,
+                  components: [
+                    {
+                      type: MessageComponentTypes.STRING_SELECT,
+                      // Append game ID
+                      custom_id: `select_character_${gameId}`,
+                      options: CHARACTER_CHOICE,
+                    },
+                  ],
+                },
+              ],
+            },
+          });
+          // Delete previous message
+          if (activeGames[gameId].playerCount >= 6) {
+            await DiscordRequest(endpoint, { method: 'DELETE' });
+          }
+        } catch (err) {
+          console.error('Error sending message:', err);
         }
-      } catch (err) {
-        console.error('Error sending message:', err);
+      } else {
+        try {
+          await res.send({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              // Fetches a random emoji to send from a helper function
+              content: 'You have already joined this game.',
+              // Indicates it'll be an ephemeral message
+              flags: InteractionResponseFlags.EPHEMERAL,
+            },
+          });
+        } catch (err) {
+          console.error('Error sending message:', err);
+        }
       }
     } else if (componentId.startsWith('select_character_')) {
       // get the associated game ID
@@ -244,11 +264,12 @@ export default async function interactions(req, res, activeGames) {
         // Update message with token in request body
         const endpoint = `webhooks/${process.env.APP_ID}/${req.body.token}/messages/${req.body.message.id}`;
 
-        activeGames[gameId].players[userId] = {
+        activeGames[gameId].players.add(userId);
+        activeGames[gameId].playerData[userId] = {
           character: character,
           hand: [],
         };
-        console.log(activeGames[gameId].players);
+        console.log(activeGames[gameId].players); //TODO: send each new player to the BFF
 
         try {
           // Send results
