@@ -40,6 +40,13 @@ const CHALLENGE_COMMAND = {
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
+// Start a game of Clue
+const START_GAME = {
+  name: 'start',
+  description: 'Start a game of Clue',
+  type: 1,
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, START_GAME];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
