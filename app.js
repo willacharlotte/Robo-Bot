@@ -1,7 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
-import { VerifyDiscordRequest, dealCards } from './backend/utils.js';
+import {
+  DiscordRequest,
+  VerifyDiscordRequest,
+  dealCards,
+} from './backend/utils.js';
 import interactions from './backend/handlers/interactions.js';
+import { Message, Client } from 'discord.js';
 
 // Create an express app
 const app = express();
@@ -40,7 +45,6 @@ app.post('/start/:game', (req, res) => {
         let i = 0;
         activeGames[gameId].players.forEach((player) => {
           activeGames[gameId].playerData[player].hand = cards.playerHands[i++];
-          //TODO: Send each player their hand using interaction token
         });
 
         console.log(activeGames[gameId]);
