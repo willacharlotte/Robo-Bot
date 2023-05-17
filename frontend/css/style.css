@@ -3,10 +3,15 @@
     flex-direction: row;
   }
   #contentContainer {
-    width: 50vw;
-    height: 50vw;
+    width: 98vh;
+    height: 98vh;
   }
   #weapons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #pieces {
     flex-direction: column;
     gap: 1rem;
   }
@@ -17,10 +22,15 @@
     flex-direction: column;
   }
   #contentContainer {
-    width: 100vw;
-    height: 100vw;
+    width: 98vw;
+    height: 98vw;
   }
   #weapons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  #pieces {
     flex-direction: row;
     gap: 1rem;
   }
@@ -60,6 +70,74 @@ section > img {
   height: 5vw;
 }
 
+section > ul > li {
+  height: 4vw;
+  width: 4vw;
+  max-width: 2rem;
+  max-height: 2rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 #weapons {
   display: flex;
+}
+
+#pieces {
+  display: flex;
+}
+
+#red {
+  background: rgb(251, 63, 63);
+  background: radial-gradient(
+    circle,
+    rgba(251, 63, 63, 1) 0%,
+    rgba(107, 3, 20, 1) 100%
+  );
+}
+
+#blue {
+  background: rgb(53, 152, 221);
+  background: radial-gradient(
+    circle,
+    rgba(53, 152, 221, 1) 0%,
+    rgba(3, 43, 107, 1) 100%
+  );
+}
+
+#green {
+  background: rgb(103, 150, 92);
+  background: radial-gradient(
+    circle,
+    rgba(103, 150, 92, 1) 0%,
+    rgba(23, 115, 97, 1) 100%
+  );
+}
+
+#yellow {
+  background: rgb(241, 210, 25);
+  background: radial-gradient(
+    circle,
+    rgba(241, 210, 25, 1) 0%,
+    rgba(177, 198, 31, 1) 100%
+  );
+}
+
+#white {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(147, 149, 127, 1) 100%
+  );
+}
+
+#purple {
+  background: rgb(63, 94, 251);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(7, 3, 22, 1) 100%
+  );
 }

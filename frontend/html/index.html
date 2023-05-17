@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cafe Menu</title>
+    <title>Cluedo</title>
     <link href="../css/style.css" rel="stylesheet" />
   </head>
 
   <body>
-    <section id="contentContainer">
-      <img id="piece" src="//www.kirupa.com/images/smiley_red.png" />
+    <section>
+      <ul id="pieces">
+        <li id="red" class="token"></li>
+        <li id="blue" class="token"></li>
+        <li id="green" class="token"></li>
+        <li id="purple" class="token"></li>
+        <li id="yellow" class="token"></li>
+        <li id="white" class="token"></li>
+      </ul>
     </section>
 
     <section id="weapons">
@@ -22,10 +29,10 @@
     </section>
 
     <script>
-      var theThing = document.querySelector("#piece");
-      var container = document.querySelector("#contentContainer");
+      var theThing = document.querySelector('#piece');
+      var container = document.querySelector('#contentContainer');
 
-      container.addEventListener("click", getClickPosition, false);
+      container.addEventListener('click', getClickPosition, false);
 
       function getClickPosition(e) {
         var parentPosition = getPosition(e.currentTarget);
@@ -33,8 +40,8 @@
         var yPosition =
           e.clientY - parentPosition.y - theThing.clientHeight / 2;
 
-        theThing.style.left = xPosition + "px";
-        theThing.style.top = yPosition + "px";
+        theThing.style.left = xPosition + 'px';
+        theThing.style.top = yPosition + 'px';
       }
 
       // Helper function to get an element's exact position
@@ -43,7 +50,7 @@
         var yPos = 0;
 
         while (el) {
-          if (el.tagName == "BODY") {
+          if (el.tagName == 'BODY') {
             // deal with browser quirks with body/window/document and page scroll
             var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
             var yScroll = el.scrollTop || document.documentElement.scrollTop;
