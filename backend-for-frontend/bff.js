@@ -16,6 +16,7 @@ export const emitter = new EventEmitter();
  * game.data should be of the following format:
  * {
  *   createdBy: <string> discord username of game creator
+ *   id: <uuid>/<int>/idk??? unique id of the game;
  *   TODO: figure what else needs to be passed through
  * }
  */
@@ -40,8 +41,8 @@ bff.post("/new-game", postNewGame);
 bff.get("/player-join", getPlayerJoin);
 bff.post("/player-join", postPlayerJoin);
 
-bff.get("/game-start", getGameStart);
-bff.post("/game-start", postGameStart);
+bff.post('/game-start', postGameStart);
+bff.get('/game/:id', getGameStart)
 
 bff.get("/", getSplash);
 
