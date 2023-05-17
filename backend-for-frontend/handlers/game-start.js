@@ -1,6 +1,6 @@
 export const getGameStart = (req, res) => {
-  const id = req.params.id
-  res.status(200).write('idk, do something ¯\\_(ツ)_/¯')
+  const id = req.params.id;
+  res.status(200).write('idk, do something ¯\\_(ツ)_/¯');
   res.end(`btw, the game id is ${id}`);
 };
 
