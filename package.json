@@ -1,19 +1,25 @@
 {
-  "name": "getting-started",
+  "name": "robo-bot",
   "version": "1.0.0",
-  "description": "Discord example app",
+  "description": "A cluedo web app that uses a discord bot to handle anonim",
   "main": "app.js",
   "type": "module",
   "engines": {
     "node": "16.x"
   },
   "scripts": {
-    "start": "node app.js",
+    "start:app": "node app.js",
     "start:bff": "node ./backend-for-frontend/bff.js",
     "register": "node ./backend/commands.js",
-    "dev": "nodemon app.js"
+    "dev:app": "nodemon app.js",
+    "dev:bff": "nodemon ./backend-for-frontend/bff.js"
   },
-  "author": "Shay DeWael",
+  "contributors": [
+    "Daniel Shuttleworth",
+    "Karishma George",
+    "Sagofiwa Moyo",
+    "Willa Lyle"
+  ],
   "license": "MIT",
   "dependencies": {
     "discord-interactions": "^3.2.0",
