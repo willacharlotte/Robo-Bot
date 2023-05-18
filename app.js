@@ -11,7 +11,7 @@ import { Message, Client } from 'discord.js';
 // Create an express app
 const app = express();
 // Get port, or default to 3000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.APP_PORT || 3000;
 // Parse request body and verifies incoming requests using discord-interactions package
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
 
@@ -65,5 +65,5 @@ app.post('/start/:game', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log('Listening on port', PORT);
+  console.log(`app started on port: ${PORT}`);
 });
