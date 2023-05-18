@@ -12,6 +12,8 @@ const bff = express().use(express.static('./frontend/')).use(express.json());
 
 export const emitter = new EventEmitter();
 
+export const root = process.env.PROJ_ROOT_DIR;
+
 /**
  * game.data should be of the following format:
  * {
