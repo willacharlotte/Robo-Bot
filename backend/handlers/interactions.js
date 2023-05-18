@@ -8,8 +8,6 @@ import {
 } from 'discord-interactions';
 import { DiscordRequest, dealCards, dmUser, getUsername } from '../utils.js';
 import { CHARACTER_CHOICE, CARDEMOJI } from '../constants.js';
-import { brotliDecompress } from 'zlib';
-import { StringDecoder } from 'string_decoder';
 
 export default async function interactions(req, res, activeGames) {
   // Interaction type and data
@@ -131,7 +129,62 @@ export default async function interactions(req, res, activeGames) {
     // "show" command
     if (name === 'show' && id) {
       const userId = req.body.member.user.id;
-      await dmUser(userId, 'I show me card');
+      const recipient = req.body.data.options[0].value;
+      const recipientId = recipient.substring(2, recipient.length - 1);
+      const card = req.body.data.options[1].value;
+
+      await dmUser(
+        recipientId,
+        `<@${userId}> showed you the following card:\n**${card}** ${CARDEMOJI[card]}`
+      );
+
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: `You have successfully shown **${card}** ${CARDEMOJI[card]} to <@${recipientId}>!`,
+          flags: InteractionResponseFlags.EPHEMERAL,
+        },
+      });
+    }
+    // "suggest" command
+    if (name === 'suggest' && id) {
+      const userId = req.body.member.user.id;
+      const suspect = req.body.data.options[0].value;
+      const weapon = req.body.data.options[1].value;
+      const room = req.body.data.options[2].value;
+
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          content: `<@${userId}> suggests that the murder was committed by **${suspect}** ${CARDEMOJI[suspect]} with the **${weapon}** ${CARDEMOJI[weapon]} in the **${room}** ${CARDEMOJI[room]}.`,
+        },
+      });
+    }
+    // "accuse" command
+    if (name === 'accuse' && id) {
+      const userId = req.body.member.user.id;
+      const suspect = req.body.data.options[0].value;
+      const weapon = req.body.data.options[1].value;
+      const room = req.body.data.options[2].value;
+
+      const gameId = Object.keys(activeGames)[0];
+      const cfc = activeGames[gameId].caseFileConfidential;
+
+      if (cfc.includes(suspect) && cfc.includes(weapon) && cfc.includes(room)) {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `@everyone, <@${userId}> correctly accuses **${suspect}** ${CARDEMOJI[suspect]} of committing the murder with the **${weapon}** ${CARDEMOJI[weapon]} in the **${room}** ${CARDEMOJI[room]}! They win the game!!`,
+          },
+        });
+      } else {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `@everyone, <@${userId}> incorrectly accuses **${suspect}** ${CARDEMOJI[suspect]} of committing the murder with the **${weapon}** ${CARDEMOJI[weapon]} in the **${room}** ${CARDEMOJI[room]}. They are now out of the game.`,
+          },
+        });
+      }
     }
   }
 
@@ -239,6 +292,7 @@ export default async function interactions(req, res, activeGames) {
             body: {
               content:
                 'You have successfully joined. Please wait for the game to start!',
+              components: [],
             },
           });
         } catch (err) {
