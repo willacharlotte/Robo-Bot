@@ -1,10 +1,10 @@
-@media screen and (min-width: 1001px) {
+@media screen and (min-width: 851px) {
   #game {
     flex-direction: row;
   }
   #board {
-    width: 98vh;
-    height: 98vh;
+    width: 102vh;
+    height: 100vh;
   }
   #weapons,
   #pieces {
@@ -12,13 +12,13 @@
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 850px) {
   #game {
     flex-direction: column;
   }
   #board {
-    width: 98vw;
-    height: 98vw;
+    width: 102vw;
+    height: 100vw;
   }
   #weapons,
   #pieces {
@@ -33,13 +33,20 @@ html {
 }
 
 body {
-  background-color: #fff;
-  width: 96vw;
+  background: rgb(186, 100, 83);
+  background: radial-gradient(
+    circle,
+    rgba(186, 100, 83, 1) 14%,
+    rgba(133, 56, 51, 1) 76%
+  );
+  width: 98vw;
   height: 96vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #game {
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +57,7 @@ body {
   background-image: url(../../assets/cluedo_board.svg);
   background-repeat: no-repeat;
   border: 1px black solid;
-  overflow: hidden;
+  background-size: cover;
   background-color: #f2f2f2;
   cursor: pointer;
 }
@@ -58,19 +65,28 @@ body {
 section > img {
   position: relative;
 
-  width: 5vw;
-  height: 5vw;
+  width: 3vw;
+  height: 3vw;
+  padding: 1vw;
+  border-radius: 50%;
   top: 0;
   left: 0;
+  background: rgb(132, 178, 133);
+  background: radial-gradient(
+    circle,
+    rgba(132, 178, 133, 1) 10%,
+    rgba(72, 156, 77, 1) 80%
+  );
 }
 
 ul > li {
   position: relative;
-  height: 4vw;
-  width: 4vw;
+  height: 4.5vw;
+  width: 4.5vw;
+
   max-width: 2rem;
   max-height: 2rem;
-  background-color: #bbb;
+
   border-radius: 50%;
   display: inline-block;
   top: 0;
@@ -79,8 +95,8 @@ ul > li {
 
 #weapons {
   position: relative;
-  transition: left 0.5s cubic-bezier(0.42, -0.3, 0.78, 1.25),
-    top 0.5s cubic-bezier(0.42, -0.3, 0.78, 1.25);
+  transition: left 1s cubic-bezier(0.42, -0.3, 0.78, 1.25),
+    top 1s cubic-bezier(0.42, -0.3, 0.78, 1.25);
   display: flex;
   gap: 1rem;
 }
@@ -139,10 +155,10 @@ ul > li {
 }
 
 #purple {
-  background: rgb(63, 94, 251);
+  background: rgb(157, 46, 180);
   background: radial-gradient(
     circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(7, 3, 22, 1) 100%
+    rgba(157, 46, 180, 1) 20%,
+    rgba(80, 14, 134, 1) 74%
   );
 }

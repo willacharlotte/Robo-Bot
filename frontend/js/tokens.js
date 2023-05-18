@@ -62,10 +62,6 @@ function getClickPosition(e) {
   if (e.target.id != 'board') {
     id = e.target.id;
     clickItem = document.getElementById(id);
-    console.log(
-      clickItem.getBoundingClientRect().top,
-      clickItem.getBoundingClientRect().left
-    );
   } else {
     let parentPosition = getPosition(container);
     let xPosition = e.clientX - parentPosition.x - clickItem.clientWidth / 2;
