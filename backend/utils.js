@@ -123,3 +123,11 @@ export function dealCards(playerCount) {
     playerHands: playerHands,
   };
 }
+
+export async function getUsername(userId) {
+  const user = await DiscordRequest(`users/${userId}`, {
+    method: 'GET',
+  }).then((res) => res.json());
+
+  return user.username;
+}

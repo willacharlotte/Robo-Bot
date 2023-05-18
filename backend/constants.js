@@ -37,7 +37,7 @@ export const CHARACTER_CHOICE = [
   {
     label: 'MISS SCARLET',
     value: 'Miss Scarlet',
-    description: 'A dry, sardonic madam with a love for secrets.',
+    description: 'A dry, sardonic madam with a love for croissant.',
   },
   {
     label: 'PROFESSOR PLUM',
@@ -78,7 +78,7 @@ export const CARDEMOJI = {
   'Dining Room': '🍽',
   Lounge: '🛋',
   Rope: '🧶',
-  'Lead Pipe': '🗞',
+  'Lead Pipe': '🔩',
   Knife: '🔪',
   Wrench: '🔧',
   Candlestick: '🕯',

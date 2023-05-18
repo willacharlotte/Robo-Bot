@@ -6,7 +6,6 @@ import {
   dealCards,
 } from './backend/utils.js';
 import interactions from './backend/handlers/interactions.js';
-import { Message, Client } from 'discord.js';
 
 // Create an express app
 const app = express();
