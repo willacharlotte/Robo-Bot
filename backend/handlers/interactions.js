@@ -6,7 +6,7 @@ import {
   MessageComponentTypes,
   ButtonStyleTypes,
 } from 'discord-interactions';
-import { DiscordRequest, dealCards, getUsername } from '../utils.js';
+import { DiscordRequest, dealCards, dmUser, getUsername } from '../utils.js';
 import { CHARACTER_CHOICE, CARDEMOJI } from '../constants.js';
 import { brotliDecompress } from 'zlib';
 import { StringDecoder } from 'string_decoder';
@@ -128,6 +128,11 @@ export default async function interactions(req, res, activeGames) {
         },
       });
     }
+    // "show" command
+    if (name === 'show' && id) {
+      const userId = req.body.member.user.id;
+      await dmUser(userId, 'I show me card');
+    }
   }
 
   /**
@@ -233,59 +238,11 @@ export default async function interactions(req, res, activeGames) {
             method: 'PATCH',
             body: {
               content:
-                'You have successfully joined. Click here to show your hand once the game has been started!',
-              components: [
-                {
-                  type: MessageComponentTypes.ACTION_ROW,
-                  components: [
-                    {
-                      type: MessageComponentTypes.BUTTON,
-                      custom_id: `show_hand_button_${gameId}`,
-                      label: 'Show Hand',
-                      style: ButtonStyleTypes.PRIMARY,
-                    },
-                  ],
-                },
-              ],
+                'You have successfully joined. Please wait for the game to start!',
             },
           });
         } catch (err) {
           console.error('Error sending message:', err);
-        }
-      }
-    } else if (componentId.startsWith('show_hand_button_')) {
-      // get the associated game ID
-      const gameId = componentId.replace('show_hand_button_', '');
-
-      if (activeGames[gameId]) {
-        const userId = req.body.member.user.id;
-        const endpoint = `webhooks/${process.env.APP_ID}/${req.body.token}/messages/${req.body.message.id}`;
-        const hand = activeGames[gameId].playerData[userId].hand;
-
-        if (hand.length !== 0) {
-          console.log(`Player ${userId} requested their hand`);
-
-          let formattedHand = '';
-          hand.forEach((card) => {
-            formattedHand += `${card} ${CARDEMOJI[card]}\n`;
-          });
-
-          // Send a new ephemeral message with the player's hand
-          await res.send({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: `Here's your hand:\n\n${formattedHand}`,
-              flags: InteractionResponseFlags.EPHEMERAL,
-            },
-          });
-        } else {
-          await res.send({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: 'The game has not started yet.',
-              flags: InteractionResponseFlags.EPHEMERAL,
-            },
-          });
         }
       }
     }

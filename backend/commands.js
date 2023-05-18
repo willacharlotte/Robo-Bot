@@ -24,22 +24,6 @@ const TEST_COMMAND = {
   type: 1,
 };
 
-// Command containing options
-const CHALLENGE_COMMAND = {
-  name: 'challenge',
-  description: 'Challenge to a match of rock paper scissors',
-  options: [
-    {
-      type: 3,
-      name: 'object',
-      description: 'Pick your object',
-      required: true,
-      choices: createCommandChoices(),
-    },
-  ],
-  type: 1,
-};
-
 // Start a game of Clue
 const START_GAME = {
   name: 'start',
@@ -47,6 +31,13 @@ const START_GAME = {
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND, START_GAME];
+// Show another player a card from your hand
+const SHOW_CARD = {
+  name: 'show',
+  description: 'Show another player a card',
+  type: 1,
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, START_GAME, SHOW_CARD];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
