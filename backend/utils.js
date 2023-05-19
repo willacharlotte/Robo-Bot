@@ -123,3 +123,29 @@ export function dealCards(playerCount) {
     playerHands: playerHands,
   };
 }
+
+export async function getUsername(userId) {
+  const user = await DiscordRequest(`users/${userId}`, {
+    method: 'GET',
+  }).then((res) => res.json());
+
+  return user.username;
+}
+
+export async function dmUser(userId, message) {
+  const response = await DiscordRequest(`users/@me/channels`, {
+    method: 'POST',
+    body: {
+      recipient_id: userId,
+    },
+  });
+  const channel_id = (await response.json()).id;
+  // console.log(channel_id);
+
+  await DiscordRequest(`/channels/${channel_id}/messages`, {
+    method: 'POST',
+    body: {
+      content: message,
+    },
+  });
+}

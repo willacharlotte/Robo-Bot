@@ -4,9 +4,10 @@ import {
   DiscordRequest,
   VerifyDiscordRequest,
   dealCards,
+  dmUser,
 } from './backend/utils.js';
 import interactions from './backend/handlers/interactions.js';
-import { Message, Client } from 'discord.js';
+import { CARDEMOJI } from './backend/constants.js';
 
 // Create an express app
 const app = express();
@@ -43,8 +44,13 @@ app.post('/start/:game', (req, res) => {
 
         // Assign all the player hands
         let i = 0;
-        activeGames[gameId].players.forEach((player) => {
+        activeGames[gameId].players.forEach(async (player) => {
           activeGames[gameId].playerData[player].hand = cards.playerHands[i++];
+          let formattedHand = '';
+          activeGames[gameId].playerData[player].hand.forEach((card) => {
+            formattedHand += `${card} ${CARDEMOJI[card]}\n`;
+          });
+          await dmUser(player, "Here's your hand:\n\n" + formattedHand);
         });
 
         console.log(activeGames[gameId]);

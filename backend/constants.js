@@ -37,7 +37,7 @@ export const CHARACTER_CHOICE = [
   {
     label: 'MISS SCARLET',
     value: 'Miss Scarlet',
-    description: 'A dry, sardonic madam with a love for secrets.',
+    description: 'A dry, sardonic madam with a love for croissant.',
   },
   {
     label: 'PROFESSOR PLUM',
@@ -61,6 +61,99 @@ export const CHARACTER_CHOICE = [
   },
 ];
 
+export const SUSPECT_COMMANDS = [
+  {
+    name: 'Colonel Mustard',
+    value: 'Colonel Mustard',
+  },
+  {
+    name: 'Miss Scarlet',
+    value: 'Miss Scarlet',
+  },
+  {
+    name: 'Professor Plum',
+    value: 'Professor Plum',
+  },
+  {
+    name: 'Mr. Green',
+    value: 'Mr. Green',
+  },
+  {
+    name: 'Mrs. White',
+    value: 'Mrs. White',
+  },
+  {
+    name: 'Mrs. Peacock',
+    value: 'Mrs. Peacock',
+  },
+];
+
+export const WEAPON_COMMANDS = [
+  {
+    name: 'Rope',
+    value: 'Rope',
+  },
+  {
+    name: 'Lead Pipe',
+    value: 'Lead Pipe',
+  },
+  {
+    name: 'Knife',
+    value: 'Knife',
+  },
+  {
+    name: 'Wrench',
+    value: 'Wrench',
+  },
+  {
+    name: 'Candlestick',
+    value: 'Candlestick',
+  },
+  {
+    name: 'Revolver',
+    value: 'Revolver',
+  },
+];
+
+export const ROOM_COMMANDS = [
+  {
+    name: 'Hall',
+    value: 'Hall',
+  },
+  {
+    name: 'Study',
+    value: 'Study',
+  },
+  {
+    name: 'Library',
+    value: 'Library',
+  },
+  {
+    name: 'Billiard Room',
+    value: 'Billiard Room',
+  },
+  {
+    name: 'Conservatory',
+    value: 'Conservatory',
+  },
+  {
+    name: 'Ball Room',
+    value: 'Ball Room',
+  },
+  {
+    name: 'Kitchen',
+    value: 'Kitchen',
+  },
+  {
+    name: 'Dining Room',
+    value: 'Dining Room',
+  },
+  {
+    name: 'Lounge',
+    value: 'Lounge',
+  },
+];
+
 export const CARDEMOJI = {
   'Colonel Mustard': '🟨',
   'Miss Scarlet': '🟥',
@@ -78,7 +171,7 @@ export const CARDEMOJI = {
   'Dining Room': '🍽',
   Lounge: '🛋',
   Rope: '🧶',
-  'Lead Pipe': '🗞',
+  'Lead Pipe': '🔩',
   Knife: '🔪',
   Wrench: '🔧',
   Candlestick: '🕯',
