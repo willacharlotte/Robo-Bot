@@ -22,13 +22,15 @@ const awaitGameStart = document.getElementById('await-game-start');
 const startGame = document.getElementById('start-game');
 const gameStarted = document.getElementById('game-started');
 
-async function startGameOnClick() {
-  return new Promise((resolve) => {
-    startGame.addEventListener('click', (event) => {
-      event.preventDefault();
-      show(gameStarted);
-      fetch(url + '/game-start', { method: 'POST' }).then(resolve);
-    });
+async function startGameOnClick(gameData) {
+  show(startGame);
+  hide(awaitGameStart);
+
+  startGame.addEventListener('click', async (event) => {
+    event.preventDefault();
+    show(gameStarted);
+    await fetch(url + '/game-start', { method: 'POST' });
+    window.location.href = `/game/${gameData.id}`;
   });
 }
 
@@ -45,6 +47,10 @@ async function waitingRoom() {
   show(awaitGameStart);
 
   while (players.length < 6) {
+    if (players.length === 2) {
+      startGameOnClick(gameData);
+    }
+
     const newPlayerData = await fetch(url + '/player-join').then((res) =>
       res.json()
     );
@@ -58,11 +64,6 @@ async function waitingRoom() {
 
     players.push(newPlayerData);
   }
-  show(startGame);
-  hide(awaitGameStart);
-
-  await startGameOnClick();
-  window.location.href = `/game/${gameData.id}`;
 }
 
 waitingRoom();
