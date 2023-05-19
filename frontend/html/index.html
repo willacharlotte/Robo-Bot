@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cluedo</title>
-    <link href="../css/style.css" rel="stylesheet" />
+    <title>Cluedo!</title>
+    <link href="../css/hide.css" rel="stylesheet" type="text/css" />
+    <script src="../js/splash.js" defer></script>
   </head>
-
   <body>
-    <article id="game">
-      <ul id="pieces">
-        <li id="red" class="token"></li>
-        <li id="blue" class="token"></li>
-        <li id="green" class="token"></li>
-        <li id="purple" class="token"></li>
-        <li id="yellow" class="token"></li>
-        <li id="white" class="token"></li>
-      </ul>
-
-      <section id="board"></section>
-      <section id="weapons">
-        <img id="candlestick" src="../../assets/candlestick.svg" />
-        <img id="knife" src="../../assets/knife.svg" />
-        <img id="leadpipe" src="../../assets/lead-pipe.svg" />
-        <img id="revolver" src="../../assets/revolver.svg" />
-        <img id="rope" src="../../assets/rope.svg" />
-        <img id="wrench" src="../../assets/wrench.svg" />
-      </section>
-    </article>
-
-    <script type="text/javascript" src="../js/tokens.js"></script>
+    <main>
+      <h1>Cluedo!</h1>
+      <h3 id="await-new-game">Waiting for a new game to start...</h3>
+      <h3 id="new-game" class="hide">
+        A new game has been created by {{createdBy}}
+      </h3>
+      <h3 id="await-players" class="hide">Waiting for players to join...</h3>
+      <table id="players-table" class="hide">
+        <caption>
+          Current Players
+        </caption>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Character</th>
+          </tr>
+        </thead>
+        <tbody id="players-table-body">
+          <tr id="player-template" class="hide">
+            <td>{{username}}</td>
+            <td>{{characterName}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="await-game-start" class="hide">You need six players to play!</h3>
+      <button id="start-game" class="hide">
+        <label for="start-game">Start Game</label>
+      </button>
+      <h3 id="game-started" class="hide">
+        Game has been started. Redirecting...
+      </h3>
+    </main>
   </body>
 </html>
