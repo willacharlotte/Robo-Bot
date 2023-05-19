@@ -1,79 +1,85 @@
-# Getting Started app for Discord
+# Cluedo!
 
-This project contains a basic rock-paper-scissors-style Discord app written in JavaScript, built for the [getting started guide](https://discord.com/developers/docs/getting-started).
+### _A web based app with discord integrations_
 
-![Demo of app](/assets/getting-started-demo.gif?raw=true)
+---
 
-> ✨ A version of this code is also hosted **[on Glitch 🎏](https://glitch.com/~getting-started-discord)** and **[on Replit 🌀](https://replit.com/github/discord/discord-example-app)**
+## Description
+
+This project implements a game of Cluedo, a classic murder mystery board game. It is designed to be played both on Discord and through a web interface. Cluedo is a game where players investigate a murder by gathering clues, interrogating suspects, and deducing the culprit, location, and weapon involved. This implementation offers an immersive and interactive gaming experience, allowing players to enjoy the game seamlessly on both Discord and the web.
 
 ## Project structure
+
 Below is a basic overview of the project structure:
 
 ```
-├── examples    -> short, feature-specific sample apps
-│   ├── app.js  -> finished app.js code
-│   ├── button.js
-│   ├── command.js
-│   ├── modal.js
-│   ├── selectMenu.js
-├── .env.sample -> sample .env file
-├── app.js      -> main entrypoint for app
-├── commands.js -> slash command payloads + helpers
-├── game.js     -> logic specific to RPS
-├── utils.js    -> utility functions and enums
+├── app.js
+├── backend
+│   ├── commands.js
+│   ├── constants.js
+│   ├── game.js
+│   ├── handlers
+│   │   └── interactions.js
+│   └── utils.js
+├── backend-for-frontend
+│   ├── bff.js
+│   ├── handlers
+│   │   ├── game-start.js
+│   │   ├── new-game.js
+│   │   ├── not-found.js
+│   │   ├── player-join.js
+│   │   └── splash.js
+│   └── helpers
+│       └── get-frontend-path.js
+├── frontend
+│   ├── css
+│   │   ├── hide.css
+│   │   └── style.css
+│   ├── html
+│   │   └── index.html
+│   └── js
+│       ├── script.js
+│       └── splash.js
+├── LICENSE
 ├── package.json
+├── package-lock.json
 ├── README.md
-└── .gitignore
 ```
 
-## Running app locally
+## Prerequisites
 
 Before you start, you'll need to install [NodeJS](https://nodejs.org/en/download/) and [create a Discord app](https://discord.com/developers/applications) with the proper permissions:
+
 - `applications.commands`
 - `bot` (with Send Messages enabled)
 
+## Project Setup
 
-Configuring the app is covered in detail in the [getting started guide](https://discord.com/developers/docs/getting-started).
+1. Clone the repository: `git clone https://github.com/willacharlotte/Robo-Bot.git`
+2. Navigate to the project directory: `cd Robo-Bot`
+3. Install the required dependencies: `npm install`
+4. Configure the environment variables: Copy `.env.sample` to a new file `.env` and add the [credentials](#app-credentials)
+5. Add the directory of the project to `PROJ_ROOT_DIR`, which can be optained by running `pwd`
 
-### Setup project
+## App Credentials
 
-First clone the project:
-```
-git clone https://github.com/discord/discord-example-app.git
-```
+Find your credentials on the [discord developer portal](https://discord.com/developers/applications), under the `General Information` and `Bot` tabs for your app. Add them to your `.env`.
 
-Then navigate to its directory and install dependencies:
-```
-cd discord-example-app
-npm install
-```
-### Get app credentials
+You'll need your app ID (`APP_ID`), bot token (`DISCORD_TOKEN`), and public key (`PUBLIC_KEY`).
 
-Fetch the credentials from your app's settings and add them to a `.env` file (see `.env.sample` for an example). You'll need your app ID (`APP_ID`), bot token (`DISCORD_TOKEN`), and public key (`PUBLIC_KEY`).
+## Install Slash Commands
 
-Fetching credentials is covered in detail in the [getting started guide](https://discord.com/developers/docs/getting-started).
+Run the following command to register the commands to Discord
 
-> 🔑 Environment variables can be added to the `.env` file in Glitch or when developing locally, and in the Secrets tab in Replit (the lock icon on the left).
-
-### Install slash commands
-
-The commands for the example app are set up in `commands.js`. All of the commands in the `ALL_COMMANDS` array at the bottom of `commands.js` will be installed when you run the `register` command configured in `package.json`:
-
-```
+```sh
 npm run register
 ```
 
-### Run the app
+## Run the App
 
-After your credentials are added, go ahead and run the app:
-
-```
-node app.js
-```
-
-> ⚙️ A package [like `nodemon`](https://github.com/remy/nodemon), which watches for local changes and restarts your app, may be helpful while locally developing.
-
-If you aren't following the [getting started guide](https://discord.com/developers/docs/getting-started), you can move the contents of `examples/app.js` (the finished `app.js` file) to the top-level `app.js`.
+1. Run `npm start:app` in the root directory to start the backend.
+2. Run `npm start:bff` to start the backend for frontend
+3. Open your web browser and navigate to `http://localhost:3001` for the frontend.
 
 ### Set up interactivity
 
@@ -104,8 +110,9 @@ On the **General Information** tab, there will be an **Interactions Endpoint URL
 
 Click **Save Changes**, and your app should be ready to run 🚀
 
-## Other resources
-- Read **[the documentation](https://discord.com/developers/docs/intro)** for in-depth information about API features.
-- Browse the `examples/` folder in this project for smaller, feature-specific code examples
-- Join the **[Discord Developers server](https://discord.gg/discord-developers)** to ask questions about the API, attend events hosted by the Discord API team, and interact with other devs.
-- Check out **[community resources](https://discord.com/developers/docs/topics/community-resources#community-resources)** for language-specific tools maintained by community members.
+## Contributors
+
+[Daniel Shuttleworth](https://github.com/DanielSBBD)
+[Karishma George](https://github.com/karishmag-bbd) 
+[Sagofiwa Moyo](https://github.com/SagofiwaM)
+[Willa Lyle](https://github.com/willacharlotte)
