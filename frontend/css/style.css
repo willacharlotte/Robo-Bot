@@ -42,4 +42,167 @@ table {
 caption {
   text-align: center;
   font-size: medium;
+@media screen and (min-width: 851px) {
+  #game {
+    flex-direction: row;
+  }
+  #board {
+    width: 102vh;
+    height: 100vh;
+  }
+  #weapons,
+  #pieces {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  #game {
+    flex-direction: column;
+  }
+  #board {
+    width: 102vw;
+    height: 100vw;
+  }
+  #weapons,
+  #pieces {
+    flex-direction: row;
+  }
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background: rgb(186, 100, 83);
+  background: radial-gradient(
+    circle,
+    rgba(186, 100, 83, 1) 14%,
+    rgba(133, 56, 51, 1) 76%
+  );
+  width: 98vw;
+  height: 96vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#board {
+  background-image: url(../../assets/cluedo-board.svg);
+  background-repeat: no-repeat;
+  border: 1px black solid;
+  background-size: cover;
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+section > img {
+  position: relative;
+
+  width: 2vw;
+  height: 2vw;
+  padding: 1vw;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  background: rgb(132, 178, 133);
+  background: radial-gradient(
+    circle,
+    rgba(132, 178, 133, 1) 10%,
+    rgba(72, 156, 77, 1) 80%
+  );
+}
+
+ul > li {
+  position: relative;
+  height: 4.5vw;
+  width: 4.5vw;
+
+  max-width: 2rem;
+  max-height: 2rem;
+
+  border-radius: 50%;
+  display: inline-block;
+  top: 0;
+  left: 0;
+}
+
+#weapons {
+  position: relative;
+  transition: left 1s cubic-bezier(0.42, -0.3, 0.78, 1.25),
+    top 1s cubic-bezier(0.42, -0.3, 0.78, 1.25);
+  display: flex;
+  gap: 1rem;
+}
+
+#pieces {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  transition: left 0.5s cubic-bezier(0.42, -0.3, 0.78, 1.25),
+    top 0.5s cubic-bezier(0.42, -0.3, 0.78, 1.25);
+}
+
+#red {
+  background: rgb(251, 63, 63);
+  background: radial-gradient(
+    circle,
+    rgba(251, 63, 63, 1) 0%,
+    rgba(107, 3, 20, 1) 100%
+  );
+}
+
+#blue {
+  background: rgb(53, 152, 221);
+  background: radial-gradient(
+    circle,
+    rgba(53, 152, 221, 1) 0%,
+    rgba(3, 43, 107, 1) 100%
+  );
+}
+
+#green {
+  background: rgb(103, 150, 92);
+  background: radial-gradient(
+    circle,
+    rgba(103, 150, 92, 1) 0%,
+    rgba(23, 115, 97, 1) 100%
+  );
+}
+
+#yellow {
+  background: rgb(241, 210, 25);
+  background: radial-gradient(
+    circle,
+    rgba(241, 210, 25, 1) 0%,
+    rgba(177, 198, 31, 1) 100%
+  );
+}
+
+#white {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(147, 149, 127, 1) 100%
+  );
+}
+
+#purple {
+  background: rgb(157, 46, 180);
+  background: radial-gradient(
+    circle,
+    rgba(157, 46, 180, 1) 20%,
+    rgba(80, 14, 134, 1) 74%
+  );
 }
