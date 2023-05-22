@@ -54,7 +54,7 @@ body {
 }
 
 #board {
-  background-image: url(../../assets/cluedo_board.svg);
+  background-image: url(../../assets/cluedo-board.svg);
   background-repeat: no-repeat;
   border: 1px black solid;
   background-size: cover;
@@ -65,8 +65,8 @@ body {
 section > img {
   position: relative;
 
-  width: 3vw;
-  height: 3vw;
+  width: 2vw;
+  height: 2vw;
   padding: 1vw;
   border-radius: 50%;
   top: 0;
