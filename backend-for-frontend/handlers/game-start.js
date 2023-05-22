@@ -1,6 +1,5 @@
 import 'dotenv';
 import { root } from '../bff.js';
-import fetch from 'node-fetch';
 
 export const getGameStart = (req, res) => {
   const id = req.params.id;
