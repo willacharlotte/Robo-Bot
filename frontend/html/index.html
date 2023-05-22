@@ -4,35 +4,51 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cluedo!</title>
+    <title>Clue</title>
     <link href="../css/hide.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <script src="../js/splash.js" defer></script>
   </head>
   <body>
     <main>
-      <h1>Cluedo!</h1>
+      <h1>Welcome to Clue.</h1>
       <h3 id="await-new-game">Waiting for a new game to start...</h3>
       <h3 id="new-game" class="hide">
         A new game has been created by {{createdBy}}
       </h3>
       <h3 id="await-players" class="hide">Waiting for players to join...</h3>
-      <table id="players-table" class="hide">
-        <caption>
-          Current Players
-        </caption>
-        <thead>
-          <tr>
-            <th>Username</th>
-            <th>Character</th>
-          </tr>
-        </thead>
-        <tbody id="players-table-body">
-          <tr id="player-template" class="hide">
-            <td>{{username}}</td>
-            <td>{{characterName}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <section id="players-table-body" class="hide">
+        <article class="player-container">
+          <figure class="player-frame">
+            <h4 class="character-caption">{{username}} as {{characterName}}</h4>
+          </figure>
+        </article>
+        <article class="player-container">
+          <figure class="player-frame">
+            <h4 class="character-caption">{{username}} as {{characterName}}</h4>
+          </figure>
+        </article>
+        <article class="player-container">
+          <figure class="player-frame">
+            <h4 class="character-caption">{{username}} as {{characterName}}</h4>
+          </figure>
+        </article>
+        <article class="player-container">
+          <figure class="player-frame">
+            <h4 class="character-caption">{{username}} as {{characterName}}</h4>
+          </figure>
+        </article>
+        <article class="player-container">
+          <figure class="player-frame">
+            <h4 class="character-caption">{{username}} as {{characterName}}</h4>
+          </figure>
+        </article>
+        <article class="player-container">
+          <figure class="player-frame">
+            <h4 class="character-caption">{{username}} as {{characterName}}</h4>
+          </figure>
+        </article>
+      </section>
       <h3 id="await-game-start" class="hide">You need at least 2 players to play!</h3>
       <button id="start-game" class="hide">
         <label for="start-game">Start Game</label>

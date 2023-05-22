@@ -30,36 +30,22 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-  background: rgb(186, 100, 83);
-  background: radial-gradient(
-    circle,
-    rgba(186, 100, 83, 1) 14%,
-    rgba(133, 56, 51, 1) 76%
-  );
-  width: 98vw;
-  height: 96vh;
+  background-image: url('../images/pool_table.png');
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#game {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+h1 {
+  font-size: 5rem;
 }
 
-#board {
-  background-image: url(../../assets/cluedo-board.svg);
-  background-repeat: no-repeat;
-  border: 1px black solid;
-  background-size: cover;
-  background-color: #f2f2f2;
-  cursor: pointer;
+h3 {
+  font-size: 2.5rem;
 }
 
 section > img {
@@ -91,6 +77,59 @@ ul > li {
   display: inline-block;
   top: 0;
   left: 0;
+}
+
+.player-frame {
+  background-image: url('../images/istockphoto-523998033-170667a.jpg');
+  background-size: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 200px;
+  height: 250px;
+  position: relative;
+  margin: 1rem;
+  align-self: center;
+}
+
+.player-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.player-template {
+  position: relative;
+  top: -283px;
+  width: 142px;
+  height: 190px;
+  margin: 2.81rem;
+  flex-grow: 1;
+}
+
+.player-template > img {
+  width: 100%;
+}
+
+.character-caption {
+  position: relative;
+  bottom: -12rem;
+  width: 200px;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#board {
+  background-image: url(../../assets/cluedo-board.svg);
+  background-repeat: no-repeat;
+  border: 1px black solid;
+  background-size: cover;
+  background-color: #f2f2f2;
+  cursor: pointer;
 }
 
 #weapons {
@@ -161,4 +200,11 @@ ul > li {
     rgba(157, 46, 180, 1) 20%,
     rgba(80, 14, 134, 1) 74%
   );
+}
+
+#players-table-body {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
