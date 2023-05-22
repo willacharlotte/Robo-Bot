@@ -60,27 +60,3 @@ export const CHARACTER_CHOICE = [
     description: 'A bit batty, neurotic, and quick to hysteria.',
   },
 ];
-
-export const CARDEMOJI = {
-  'Colonel Mustard': '🟨',
-  'Miss Scarlet': '🟥',
-  'Professor Plum': '🟪',
-  'Mr. Green': '🟩',
-  'Mrs. White': '⬜',
-  'Mrs. Peacock': '🟦',
-  Hall: '🚪',
-  Study: '💻',
-  Library: '📚',
-  'Billiard Room': '🎱',
-  Conservatory: '🌷',
-  'Ball Room': '💃',
-  Kitchen: '🍳',
-  'Dining Room': '🍽',
-  Lounge: '🛋',
-  Rope: '🧶',
-  'Lead Pipe': '🗞',
-  Knife: '🔪',
-  Wrench: '🔧',
-  Candlestick: '🕯',
-  Revolver: '🔫',
-};

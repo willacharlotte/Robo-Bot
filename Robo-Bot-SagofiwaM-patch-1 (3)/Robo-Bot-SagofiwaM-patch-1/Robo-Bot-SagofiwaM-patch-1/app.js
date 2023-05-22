@@ -1,17 +1,12 @@
 import 'dotenv/config';
 import express from 'express';
-import {
-  DiscordRequest,
-  VerifyDiscordRequest,
-  dealCards,
-} from './backend/utils.js';
+import { VerifyDiscordRequest, dealCards } from './backend/utils.js';
 import interactions from './backend/handlers/interactions.js';
-import { Message, Client } from 'discord.js';
 
 // Create an express app
 const app = express();
 // Get port, or default to 3000
-const PORT = process.env.APP_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 // Parse request body and verifies incoming requests using discord-interactions package
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
 
@@ -45,6 +40,7 @@ app.post('/start/:game', (req, res) => {
         let i = 0;
         activeGames[gameId].players.forEach((player) => {
           activeGames[gameId].playerData[player].hand = cards.playerHands[i++];
+          //TODO: Send each player their hand using interaction token
         });
 
         console.log(activeGames[gameId]);
@@ -65,5 +61,5 @@ app.post('/start/:game', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`app started on port: ${PORT}`);
+  console.log('Listening on port', PORT);
 });

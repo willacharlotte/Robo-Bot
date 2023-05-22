@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title class="cluedogame">Cluedo!</title>
+    <link href="../css/hide.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <script src="../js/splash.js" defer></script>
+<section class="container" id="container">
+  <nav>
+  <ul>
+<li hr><a href="./index.html">Home</a></li>
+<li hr><a href="./Howtoplay.html">How To Play</a></li>
+<li hr><a href="#">Settings</a></li>
+  </ul>
+</nav>
+</section>
+
+  </head>
+  <body>
+    <main>
+      <h1>Cluedo!</h1>
+      <h2 id="slogan-of-game"> Let the Murder Mystey Begin , You ready to have some fun!</h2>
+      <h3 id="await-new-game">Waiting for a new game to start..</h3>
+      <h3 id="new-game" class="hide">
+        A new game has been created by {{createdBy}}
+      </h3>
+      <h3 id="await-players" class="hide">Waiting for players to join.</h3>
+      <br>
+      <br>
+      <section class="column">
+        <section class="card">
+         <img src="../image/download.jpg" alt="download" style="width:100px">
+        </section>
+      </section>
+        <section class="column">
+          <section class="card">
+            <img src="../image/35652193168665.5e5e2c026478f.png" alt="35652193168665.5e5e2c026478f" style="width: 100px;">
+          </section>
+        </section>
+      <section class="column">
+        <section class="card">
+          <img src="../image/miss-peacock-753624-normal.jpg" alt="miss-peacock" style="width: 100px;">
+        </section>
+      </section>
+      <section class="column">
+        <section class="card">
+          <img src="../image/miss-scarlet-753624-normal.jpg" alt="miss-scarlet-753624-normal" style="width: 100px;">
+        </section>
+      </section>
+      <section class="column">
+        <section class="card">
+          <img src="../image/prof.jpg" alt="prof"style="width: 100px;">
+        </section>
+      </section>
+      <section class="column">
+        <section class="card">
+          <img src="../image/mrs-white.jpg" alt="mrs-white" style="width:100px;">
+        </section>
+      </section>
+      <br>
+      <br>  
+      <table class="table table-bordered table-hover" class="container table-responsive py-5"  id="players-table" class="hide">
+        <br>
+        <h2 id="players-table">
+          Current Players:
+        </h2>
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Character</th>
+          </tr>
+        </thead>
+        <tbody id="players-table-body">
+          <tr id="player-template" class="hide">
+            <td>{{username}}</td>
+            <td>{{characterName}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="await-game-start" class="hide">
+        You need at least two players to play!
+      </h3>
+      <h3 id="game-start" class="hide">
+        {{playerName}} has started the game.
+      </h3>
+      <h3 id="game-start" class="hide">Redirecting you to the game.</h3>
+    </main>
+  </body>
+</html>

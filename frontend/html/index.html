@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <title class="cluedogame">Cluedo!</title>
     <link href="../css/hide.css" rel="stylesheet" type="text/css" />
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
@@ -20,6 +21,21 @@
       </h3>
       <h3 id="await-players" class="hide">Waiting for players to join.</h3>
       <table class="table table-striped" id="players-table" class="hide">
+=======
+    <title>Cluedo!</title>
+    <link href="../css/hide.css" rel="stylesheet" type="text/css" />
+    <script src="../js/splash.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Cluedo!</h1>
+      <h3 id="await-new-game">Waiting for a new game to start...</h3>
+      <h3 id="new-game" class="hide">
+        A new game has been created by {{createdBy}}
+      </h3>
+      <h3 id="await-players" class="hide">Waiting for players to join...</h3>
+      <table id="players-table" class="hide">
+>>>>>>> main
         <caption>
           Current Players
         </caption>
@@ -36,6 +52,7 @@
           </tr>
         </tbody>
       </table>
+<<<<<<< HEAD
       <h3 id="await-game-start" class="hide">
         You need at least two players to play!
       </h3>
@@ -43,6 +60,15 @@
         {{playerName}} has started the game.
       </h3>
       <h3 id="game-start" class="hide">Redirecting you to the game.</h3>
+=======
+      <h3 id="await-game-start" class="hide">You need six players to play!</h3>
+      <button id="start-game" class="hide">
+        <label for="start-game">Start Game</label>
+      </button>
+      <h3 id="game-started" class="hide">
+        Game has been started. Redirecting...
+      </h3>
+>>>>>>> main
     </main>
   </body>
 </html>

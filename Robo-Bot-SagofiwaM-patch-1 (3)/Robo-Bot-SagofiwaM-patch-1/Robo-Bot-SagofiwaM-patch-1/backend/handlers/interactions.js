@@ -7,7 +7,7 @@ import {
   ButtonStyleTypes,
 } from 'discord-interactions';
 import { DiscordRequest, dealCards } from '../utils.js';
-import { CHARACTER_CHOICE, CARDEMOJI } from '../constants.js';
+import { CHARACTER_CHOICE } from '../constants.js';
 
 export default async function interactions(req, res, activeGames) {
   // Interaction type and data
@@ -91,9 +91,10 @@ export default async function interactions(req, res, activeGames) {
         playerData: {},
         playerCount: 0,
         gameStarted: false,
+        interactionToken: req.body.token,
       };
 
-      console.log('Game started with id ' + id); // TODO: send this id to the BFF
+      console.log(id); // TODO: send this id to the BFF
 
       return res.send({
         type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
@@ -211,6 +212,7 @@ export default async function interactions(req, res, activeGames) {
           await res.send({
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
+              // Fetches a random emoji to send from a helper function
               content: 'Which character do you want to play as?',
               // Indicates it'll be an ephemeral message
               flags: InteractionResponseFlags.EPHEMERAL,
@@ -282,59 +284,12 @@ export default async function interactions(req, res, activeGames) {
             method: 'PATCH',
             body: {
               content:
-                'You have successfully joined. Click here to show your hand once the game has been started!',
-              components: [
-                {
-                  type: MessageComponentTypes.ACTION_ROW,
-                  components: [
-                    {
-                      type: MessageComponentTypes.BUTTON,
-                      custom_id: `show_hand_button_${gameId}`,
-                      label: 'Show Hand',
-                      style: ButtonStyleTypes.PRIMARY,
-                    },
-                  ],
-                },
-              ],
+                'You have successfully joined. Please wait for the game to start!',
+              components: [],
             },
           });
         } catch (err) {
           console.error('Error sending message:', err);
-        }
-      }
-    } else if (componentId.startsWith('show_hand_button_')) {
-      // get the associated game ID
-      const gameId = componentId.replace('show_hand_button_', '');
-
-      if (activeGames[gameId]) {
-        const userId = req.body.member.user.id;
-        const endpoint = `webhooks/${process.env.APP_ID}/${req.body.token}/messages/${req.body.message.id}`;
-        const hand = activeGames[gameId].playerData[userId].hand;
-
-        if (hand.length !== 0) {
-          console.log(`Player ${userId} requested their hand`);
-
-          let formattedHand = '';
-          hand.forEach((card) => {
-            formattedHand += `${card} ${CARDEMOJI[card]}\n`;
-          });
-
-          // Send a new ephemeral message with the player's hand
-          await res.send({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: `Here's your hand:\n\n${formattedHand}`,
-              flags: InteractionResponseFlags.EPHEMERAL,
-            },
-          });
-        } else {
-          await res.send({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: 'The game has not started yet.',
-              flags: InteractionResponseFlags.EPHEMERAL,
-            },
-          });
         }
       }
     }
