@@ -124,7 +124,7 @@ ul > li {
 }
 
 #board {
-  background-image: url(../../assets/cluedo-board.svg);
+  background-image: url(../assets/cluedo-board.svg);
   background-repeat: no-repeat;
   border: 1px black solid;
   background-size: cover;

@@ -1,7 +1,9 @@
+import { root } from '../bff.js';
+
 export const getGameStart = (req, res) => {
+  const htmlFile = 'frontend/html/board.html';
+  res.sendFile(htmlFile, { root: root });
   const id = req.params.id;
-  res.status(200).write('idk, do something ¯\\_(ツ)_/¯');
-  res.end(`btw, the game id is ${id}`);
 };
 
 export const postGameStart = (req, res) => {
