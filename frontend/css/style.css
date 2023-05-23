@@ -42,6 +42,7 @@ table {
 caption {
   text-align: center;
   font-size: medium;
+}
 @media screen and (min-width: 851px) {
   #game {
     flex-direction: row;
@@ -98,7 +99,7 @@ body {
 }
 
 #board {
-  background-image: url(../../assets/cluedo-board.svg);
+  background-image: url(../assets/cluedo-board.svg);
   background-repeat: no-repeat;
   border: 1px black solid;
   background-size: cover;

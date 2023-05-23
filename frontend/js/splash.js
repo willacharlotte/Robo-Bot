@@ -30,7 +30,7 @@ async function startGameOnClick(gameData) {
     event.preventDefault();
     show(gameStarted);
     await fetch(url + '/game-start', { method: 'POST' });
-    window.location.href = `/game/${gameData.id}`;
+    window.location.href = `board/game/${gameData.id}`;
   });
 }
 
