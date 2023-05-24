@@ -7,7 +7,6 @@ CREATE TABLE `game_object_types` (
 CREATE TABLE `game_objects` (
   `object_id` integer AUTO_INCREMENT,
   `object_type_id` integer,
-  `object_type_name` varchar(255),
   `object_description` varchar(255),
   PRIMARY KEY (object_id)
 );

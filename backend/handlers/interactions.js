@@ -8,22 +8,6 @@ import {
 } from 'discord-interactions';
 import { DiscordRequest, dealCards, dmUser, getUsername } from '../utils.js';
 import { CHARACTER_CHOICE, CARDEMOJI } from '../constants.js';
-import { createConnection } from 'mysql';
-
-const con = createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-});
-
-con.connect((err) => {
-  if (err) throw err;
-  con.query('SELECT * FROM game_objects', (err, result, fields) => {
-    if (err) throw err;
-    console.log(result);
-  });
-});
 
 export default async function interactions(req, res, activeGames) {
   // Interaction type and data

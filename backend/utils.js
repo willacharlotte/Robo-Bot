@@ -1,7 +1,48 @@
 import 'dotenv/config';
 import fetch from 'node-fetch';
 import { verifyKey } from 'discord-interactions';
-import { SUSPECTS, ROOMS, WEAPONS } from './constants.js';
+import { createConnection } from 'mysql';
+import { SUSPECTS, WEAPONS, ROOMS } from './constants';
+
+// let SUSPECTS = [];
+// let WEAPONS = [];
+// let ROOMS = [];
+
+// const con = createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_NAME,
+// });
+
+// con.connect((err) => {
+//   if (err) throw err;
+//   SUSPECTS = con.query(
+//     'SELECT object_description FROM game_objects WHERE object_type_id=1',
+//     (err, result, fields) => {
+//       if (err) throw err;
+//       return result.map((res) => res.object_description);
+//     }
+//   );
+
+//   WEAPONS = con.query(
+//     'SELECT object_description FROM game_objects WHERE object_type_id=2',
+//     (err, result, fields) => {
+//       if (err) throw err;
+//       return result.map((res) => res.object_description);
+//     }
+//   );
+
+//   ROOMS = con.query(
+//     'SELECT object_description FROM game_objects WHERE object_type_id=3',
+//     (err, result, fields) => {
+//       if (err) throw err;
+//       return result.map((res) => res.object_description);
+//     }
+//   );
+// });
+
+// console.log(SUSPECTS, ROOMS, WEAPONS);
 
 export function VerifyDiscordRequest(clientKey) {
   return function (req, res, buf, encoding) {
