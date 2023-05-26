@@ -95,7 +95,7 @@ export default async function interactions(req, res, activeGames) {
 
       console.log('Game started with id ' + id);
 
-      await fetch('http://localhost:3001/new-game', {
+      await fetch(`${process.env.BFF_URL}/new-game`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -267,7 +267,7 @@ export default async function interactions(req, res, activeGames) {
           hand: [],
         };
 
-        await fetch('http://localhost:3001/player-join', {
+        await fetch(`${process.env.BFF_URL}/player-join`, {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',

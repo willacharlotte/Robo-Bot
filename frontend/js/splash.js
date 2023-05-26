@@ -10,7 +10,7 @@ const bindData = (element, key, value) => {
   element.innerHTML = element.innerHTML.replace(`{{${key}}}`, value);
 };
 
-const url = 'http://localhost:3001';
+const url = 'https://d039-102-214-230-20.ngrok-free.app';
 
 const awaitNewGame = document.getElementById('await-new-game');
 const newGame = document.getElementById('new-game');
@@ -29,7 +29,12 @@ async function startGameOnClick(gameData) {
   startGame.addEventListener('click', async (event) => {
     event.preventDefault();
     show(gameStarted);
-    await fetch(url + '/game-start', { method: 'POST' });
+    const options = {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      body: JSON.stringify({ id: gameData.id }),
+    };
+    await fetch(url + '/game-start', options);
     window.location.href = `/game/${gameData.id}`;
   });
 }

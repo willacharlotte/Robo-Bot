@@ -1,3 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,600');
+main {
+  padding-top: 10rem;
+}
+
+/* Main heading title*/
+main h1 {
+  font-size: 70px;
+  font-weight: 600;
+  color: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* Background game image*/
+body {
+  /* use relative urls to make sure the render happens -> ./ and ../ */
+  background-image: url(../image/boardgamebackgroud.jpg);
+  /*background-color: #cccccc;*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  margin: 0;
+}
+
+/*Fonts for main page*/
+h3 {
+  font-style: normal;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+  font-size: x-large;
+  color: black;
+}
+h2 {
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: xx-large;
+  color: black;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+/*nav bar*/
+nav {
+  float: right;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 70px;
+  padding-top: 23px;
+
+  position: relative;
+}
+
+nav a {
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background-color: #444;
+  position: absolute;
+  top: 0;
+  width: 0%;
+  transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+  width: 100%;
+}
+head {
+  background: black;
+}
+
+table {
+  font-size: larger;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-self: center;
+  background-color: antiquewhite;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+head::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Caption*/
+
+.players-table {
+  text-align: center;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.column {
+  float: left;
+  width: auto;
+  padding: 0 10px;
+}
+.row {
+  margin: 0 -5px;
+}
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/*counter cards */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+.card {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
 @media screen and (min-width: 851px) {
   #game {
     flex-direction: row;
@@ -30,36 +180,28 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+  background: rgb(132, 178, 133);
+  background: radial-gradient(
+    circle,
+    rgba(132, 178, 133, 1) 10%,
+    rgba(72, 156, 77, 1) 80%
+  );
 }
 
 body {
-  background: rgb(186, 100, 83);
-  background: radial-gradient(
-    circle,
-    rgba(186, 100, 83, 1) 14%,
-    rgba(133, 56, 51, 1) 76%
-  );
-  width: 98vw;
-  height: 96vh;
+  background-image: url('../images/pool_table.png');
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#game {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+h1 {
+  font-size: 5rem;
 }
 
-#board {
-  background-image: url(../../assets/cluedo-board.svg);
-  background-repeat: no-repeat;
-  border: 1px black solid;
-  background-size: cover;
-  background-color: #f2f2f2;
-  cursor: pointer;
+h3 {
+  font-size: 2.5rem;
 }
 
 section > img {
@@ -91,6 +233,22 @@ ul > li {
   display: inline-block;
   top: 0;
   left: 0;
+}
+
+#game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#board {
+  background-image: url(../assets/cluedo-board.svg);
+  background-repeat: no-repeat;
+  border: 1px black solid;
+  background-size: cover;
+
+  cursor: pointer;
 }
 
 #weapons {
@@ -161,4 +319,38 @@ ul > li {
     rgba(157, 46, 180, 1) 20%,
     rgba(80, 14, 134, 1) 74%
   );
+}
+
+button {
+  background: #19753f;
+  background-image: -webkit-linear-gradient(top, #19753f, #3fab8e);
+  background-image: -moz-linear-gradient(top, #19753f, #3fab8e);
+  background-image: -ms-linear-gradient(top, #19753f, #3fab8e);
+  background-image: -o-linear-gradient(top, #19753f, #3fab8e);
+  background-image: linear-gradient(to bottom, #19753f, #3fab8e);
+  -webkit-border-radius: 16;
+  -moz-border-radius: 16;
+  border-radius: 16px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #4dd1a5 2px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
