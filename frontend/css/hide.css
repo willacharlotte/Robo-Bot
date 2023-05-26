@@ -1,75 +1,72 @@
-
 @import url('https://fonts.googleapis.com/css?family=Cardo|Work+Sans&display=swap');
 
 /*Hiding property */
-.hide
-{
-    display: none;
-} 
-/*How to Play Styling  */
-:root {
-	--black: #01040f;
-	--blueish:  #362d75;
+.hide {
+  display: none;
 }
+/*How to Play Styling  */
+
 body {
-	background: var(--blueish);
-	margin: 0;
-	padding: 20px;
-	color: var(--black);
-	font-size: 14px;
-	line-height: 1.25;
+  background: var(--blueish);
+
+  padding: 20px;
+  color: var(--black);
+  font-size: 14px;
+  line-height: 1.25;
 }
 .wrapper {
-	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-	grid-gap: 1em 3em;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 1em 3em;
 }
 
 .sans {
-	font-family: 'Work Sans', Helvetica, Arial, sans-serif;
+  font-family: 'Work Sans', Helvetica, Arial, sans-serif;
 }
 
 .serif {
-	font-family: 'Cardo', Garamond, 'Times New Roman', serif;
+  font-family: 'Cardo', Garamond, 'Times New Roman', serif;
 }
 
 .centre {
-	text-align: center;
+  text-align: center;
 }
 
 .title {
-	font-size: 10em;
-	line-height: 90%;
-	margin: 40px 0;
+  font-size: 10em;
+  line-height: 90%;
+  margin: 40px 0;
 }
 
 .caps {
-	text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .justify {
-	text-align: justify;
+  text-align: justify;
 }
 
 .span-all {
-	grid-column: span 12;
+  grid-column: span 12;
 }
 
 .span-twothirds {
-	grid-column: span 8;
+  grid-column: span 8;
 }
 
 .span-threefourths {
-	grid-column: span 9;
-
+  grid-column: span 9;
 }
 
-title, .serif, .caps ,.centre
-{
-	text-decoration: underline;
+title,
+.serif,
+.caps,
+.centre {
+  text-decoration: underline;
 }
 
-.sans, summary ,.justify
-{
-	text-align: auto;
+.sans,
+summary,
+.justify {
+  text-align: auto;
 }
