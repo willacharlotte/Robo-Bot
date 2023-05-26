@@ -19,7 +19,6 @@ body {
   /* use relative urls to make sure the render happens -> ./ and ../ */
   background-image: url(../image/boardgamebackgroud.jpg);
   /*background-color: #cccccc;*/
-  height: 500px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -141,7 +140,6 @@ body {
   .column {
     width: 100%;
     display: block;
-    margin-bottom: 20px;
   }
 }
 .card {
@@ -238,7 +236,6 @@ ul > li {
 }
 
 #game {
-  padding-top: 28rem;
   display: flex;
   justify-content: center;
   align-items: center;

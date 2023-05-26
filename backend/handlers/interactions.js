@@ -267,8 +267,6 @@ export default async function interactions(req, res, activeGames) {
           hand: [],
         };
 
-        console.log(process.env.BFF_URL);
-
         await fetch(`${process.env.BFF_URL}/player-join`, {
           method: 'post',
           headers: {
